@@ -6,6 +6,8 @@ window.onload = () => {
         if (radio.tagName.toLowerCase() !== 'input') {return false}
         if (radio.getAttribute('type') !== 'radio') {return false}
         radio.setAttribute('checked', 'checked');
+        window.history.pushState('object', document.title, location.href.split("?")[0]);
+
     } catch (e) {
         console.error(e);
     }
