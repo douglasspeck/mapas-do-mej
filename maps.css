@@ -1,0 +1,256 @@
+:root {
+    --fill-0: #ffffff;
+    --fill-1: #ff8888;
+    --fill-2: #ff8822;
+    --fill-3: #ffbb44;
+    --nuca: #61e1a4;
+    --nuca-azul: #222288;
+    --nuca-8: #85e6b8;
+    --nuca-6: #97e8c2;
+    --nuca-4: #a8eacc;
+    --nuca-2: #cbeee0;
+    --baunuc: #e25b00;
+    --nusc: #6e42a1;
+    --nsp: #fe1a80;
+}
+
+body, main {
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#index > main > nav,
+#index > main > nav > a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 20vw;
+}
+
+#index > main > nav > a {
+    text-decoration: none;
+    height: 5vh;
+    margin-top: 1em;
+    font-size: 1.5em;
+    font-weight: bold;
+    background-color: var(--nuca);
+    color: var(--nuca-azul);
+}
+
+#index h1 {
+    margin: 0;
+}
+
+h1 {
+    font-size: 5vh;
+    padding: 0;
+    margin: 0 0 1em;
+}
+
+svg {
+    height: 70vh;
+    cursor: pointer;
+}
+
+svg path {
+    stroke: #222222;
+    stroke-width: 0.1;
+    fill-opacity: 0.5;
+    fill: var(--fill, inherit);
+}
+
+#nuca, path[data-nucleo="nuca"] {
+    --fill: var(--nuca);
+}
+
+#baunuc, path[data-nucleo="baunuc"] {
+    --fill: var(--baunuc);
+}
+
+#nusc, path[data-nucleo="nusc"] {
+    --fill: var(--nusc);
+}
+
+#nsp, path[data-nucleo="nsp"] {
+    --fill: var(--nsp);
+}
+
+svg path:hover {
+    fill-opacity: 1 !important;
+    position: relative;
+}
+
+#map-menu:not(:has(:checked)) ~ svg:has(path:hover) > path:not(:hover) {
+    fill-opacity: 0.25;
+}
+
+#map-menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 5vh;
+    display: grid;
+    grid-template-columns: 2vw auto;
+    align-items: start;
+    margin: 0;
+    width: 15vw;
+}
+
+#map-menu * {
+    margin: 0;
+    padding: 0;
+    line-height: 1em;
+}
+
+#map-menu > button {
+    grid-column: 1/3;
+    margin-top: 1rem;
+    width: 100%;
+    font-family: inherit;
+    font-size: 1.25em;
+    font-weight: 600;
+    padding: .5em 0;
+    cursor: pointer;
+    background-color: var(--nuca-azul);
+    border: 2px solid var(--nuca-azul);
+    color: #fff;
+    transition: all .15s linear;
+}
+
+#map-menu > button:hover {
+    background-color: transparent;
+    border: 2px solid var(--nuca-azul);
+    color: var(--nuca-azul);
+}
+
+#map-menu > a {
+    grid-column: 1/3;
+    margin-top: .5rem;
+    font-weight: 500;
+    color: var(--nuca-azul);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+#map-menu > input {
+    margin: calc(0.5em + 3px) 1ch 0 0;
+}
+
+#map-menu > label {
+    margin-top: 0.5em;
+}
+
+#map-menu > label > ul > li {
+    margin-left: 1em;
+    padding-top: 0.25em;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: .5em;
+}
+
+#map-menu > label > ul > li::marker {
+    content: "";
+}
+
+input:not(:checked) + label > ul { display: none; }
+
+#map-menu > label > ul > li::before {
+    content: '';
+    display: block;
+    width: 1em;
+    height: 1em;
+    aspect-ratio: 1/1;
+    border: 1px solid #000;
+    border-radius: 1em;
+}
+
+#map-menu > label > ul > li:nth-child(1)::before { background-color: var(--fill-0); }
+#map-menu > label > ul > li:nth-child(2)::before { background-color: var(--nuca-2); }
+#map-menu > label > ul > li:nth-child(3)::before { background-color: var(--nuca-4); }
+#map-menu > label > ul > li:nth-child(4)::before { background-color: var(--nuca-8); }
+#map-menu > label > ul > li:last-child::before { background-color: var(--nuca); }
+
+/* MAPA DE IES da FEJESP */
+
+#map-menu:has(#input-IES:checked) ~ svg path[data-ies="0"] {
+    fill: transparent;
+}
+
+#map-menu:has(#input-IES:checked) ~ svg path[data-ies="1"],
+#map-menu:has(#input-IES:checked) ~ svg path[data-ies="2"],
+#map-menu:has(#input-IES:checked) ~ svg path[data-ies="3"] {
+    fill-opacity: 0.25;
+}
+
+#map-menu:has(#input-IES:checked) ~ svg path[data-ies="4"],
+#map-menu:has(#input-IES:checked) ~ svg path[data-ies="5"] {
+    fill-opacity: 0.5;
+}
+
+/* MAPA DE AGENTES */
+
+#map-menu:has(#input-agentes:checked) ~ svg path[data-agentes="0"] {
+    --fill: var(--fill-0);
+}
+
+#map-menu:has(#input-agentes:checked) ~ svg path[data-agentes="1"],
+#map-menu:has(#input-agentes:checked) ~ svg path[data-agentes="2"] {
+    fill: var(--fill-1);
+}
+
+#map-menu:has(#input-agentes:checked) ~ svg path[data-agentes="3"],
+#map-menu:has(#input-agentes:checked) ~ svg path[data-agentes="4"] {
+    fill: var(--fill-2);
+}
+
+/* MAPA DE EJS x IES */
+
+#input-ejs-x-ies:checked + label > ul > li:nth-child(1)::before { background-color: #fff; }
+#input-ejs-x-ies:checked + label > ul > li:nth-child(2)::before { background-color: var(--nuca-2); }
+#input-ejs-x-ies:checked + label > ul > li:nth-child(3)::before { background-color: var(--nuca-4); }
+#input-ejs-x-ies:checked + label > ul > li:nth-child(4)::before { background-color: var(--nuca-6); }
+#input-ejs-x-ies:checked + label > ul > li:nth-child(5)::before { background-color: var(--nuca-8); }
+#input-ejs-x-ies:checked + label > ul > li:nth-child(6)::before { background-color: var(--nuca); }
+
+#map-menu:has(#input-ejs-x-ies:checked) ~ svg path[data-ies="0"] {
+    display: none; 
+}
+
+#map-menu:has(#input-ejs-x-ies:checked) ~ svg path[data-ejs-x-ies="0"],
+#map-menu:has(#input-ejs-x-ies:checked) ~ svg:has(path:hover) path[data-ejs-x-ies="0"]:not(:hover) {
+    fill-opacity: 0;
+}
+
+#map-menu:has(#input-ejs-x-ies:checked) ~ svg path[data-ejs-x-ies="0,2"],
+#map-menu:has(#input-ejs-x-ies:checked) ~ svg:has(path:hover) path:not(:hover) {
+    fill-opacity: 0.2;
+}
+
+#map-menu:has(#input-ejs-x-ies:checked) ~ svg path[data-ejs-x-ies="0,4"] {
+    fill-opacity: 0.4;
+}
+
+#map-menu:has(#input-ejs-x-ies:checked) ~ svg path[data-ejs-x-ies="0,6"] {
+    fill-opacity: 0.6;
+}
+
+#map-menu:has(#input-ejs-x-ies:checked) ~ svg path[data-ejs-x-ies="0,8"] {
+    fill-opacity: 0.8;
+}
+
+#map-menu:has(#input-ejs-x-ies:checked) ~ svg path[data-ejs-x-ies="1"],
+#map-menu:has(#input-ejs-x-ies:checked) ~ svg path:hover {
+    fill-opacity: 1;
+}
