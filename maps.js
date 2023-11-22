@@ -1,3 +1,16 @@
+window.onload = () => {
+    let parameters = new URLSearchParams(window.location.search);
+    let index = parseInt(parameters.get('menu')) - 1;
+    let radio = document.getElementById('map-menu').children[2 * index];
+    try {
+        if (radio.tagName.toLowerCase() !== 'input') {return false}
+        if (radio.getAttribute('type') !== 'radio') {return false}
+        radio.setAttribute('checked', 'checked');
+    } catch (e) {
+        console.error(e);
+    }
+}
+
 var ContainerElements = ["svg","g"];
 var RelevantStyles = {"path":["fill","stroke","stroke-width","fill-opacity","display"]};
 
